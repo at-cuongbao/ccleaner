@@ -70,6 +70,7 @@ export default {
     },
     cancelEdit() {
       this.editing = false;
+      this.title = this.cachedTask
     },
     removeTodo(index) {
       this.$emit("removedTodo", index);

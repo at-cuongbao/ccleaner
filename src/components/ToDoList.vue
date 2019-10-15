@@ -130,19 +130,6 @@ export default {
         this.idForTodo++;
       }
     },
-    // editTodo(todo) {
-    //   this.cachedTask = todo.title;
-    //   todo.editing = true;
-    // },
-    // doneEdit(todo) {
-    //   todo.editing = false;
-    //   if (!todo.title.trim().length) {
-    //     todo.title = this.cachedTask;
-    //   }
-    // },
-    // cancelEdit(todo) {
-    //   todo.editing = false;
-    // },
     removeTodo(index) {
       this.todos.splice(index, 1);
     },
