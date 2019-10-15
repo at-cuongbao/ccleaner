@@ -28,7 +28,12 @@
       <hr />
       <div class="section-1 clr">
         <div class="left">
-          <input type="checkbox" class="input-checkbox" @click="checkAll()" :checked="!itemLeft && todos.length" />
+          <input
+            type="checkbox"
+            class="input-checkbox"
+            @click="checkAll()"
+            :checked="!itemLeft && todos.length"
+          />
           <span class="middle">Check all</span>
         </div>
         <div class="right">
@@ -159,5 +164,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-  @import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css");
 </style>
