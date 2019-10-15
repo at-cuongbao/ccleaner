@@ -1,0 +1,54 @@
+.clr {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.middle {
+  vertical-align: middle;
+}
+input {
+  outline: 0;
+}
+.is-relative {
+  position: relative;
+}
+.remove-item {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+.container {
+  max-width: 500px;
+  margin: auto;
+}
+.to-do-list {
+  padding: 0;
+  max-height: 300px;
+  overflow: scroll;
+  .middle-over {
+    width: 80%;
+    display: inline-block;
+    line-height: 30px;
+  }
+  .input-checkbox {
+    margin-right: 6px;
+  }
+}
+.todo-item {
+  list-style: none;
+  text-align: left;
+  padding: 5px 0 5px 10px;
+  &:hover {
+    cursor: pointer;
+    background: #ececec;
+  }
+}

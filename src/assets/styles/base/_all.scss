@@ -1,0 +1,24 @@
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+.logo {
+  width: 50px;
+  height: 50px;
+  h4 {
+    color: yellowgreen;
+  }
+}
+.form-control {
+  line-height: 30px;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.06);
+  outline: 0;
+  border: solid 1px #ececec;
+  padding: 0 10px;
+  width: 100%;
+  border-radius: 4px;
+}
