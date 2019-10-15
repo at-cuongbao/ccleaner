@@ -58,6 +58,8 @@ export default {
       if (!this.title.trim().length) {
         this.title = this.cachedTask;
       }
+      console.log(this.title);
+      
       this.$emit("finishedEdit", {
         index: this.index,
         todo: {
@@ -70,7 +72,6 @@ export default {
     },
     cancelEdit() {
       this.editing = false;
-      this.title = this.cachedTask
     },
     removeTodo(index) {
       this.$emit("removedTodo", index);

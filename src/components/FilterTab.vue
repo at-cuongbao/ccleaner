@@ -26,8 +26,6 @@ export default {
   },
   methods: {
     onClearCompleted() {
-      console.log(123);
-
       this.$emit('onClearCompletedFromChild');
     }
   }
