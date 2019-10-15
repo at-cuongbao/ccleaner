@@ -32,7 +32,7 @@
           <span class="middle">Check all</span>
         </div>
         <div class="right">
-          <span class="middle">{{itemLeft}} items left</span>
+          <span class="middle">{{itemLeft}} item(s) left</span>
         </div>
       </div>
       <hr />
@@ -159,17 +159,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-@import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css");
-.todo-input {
-  width: 480px;
-}
-// CSS transitions
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
+  @import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css");
 </style>

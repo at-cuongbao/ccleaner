@@ -1,10 +1,10 @@
 <template>
   <header class="page-header">
     <img class="logo" src="../assets/logo.png">
-    <h4>
+    <h1>
       TodoList
       <i class="color-primary">CCleaner</i>
-    </h4>
+    </h1>
   </header>
 </template>
 
@@ -17,8 +17,3 @@ export default {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
-//
-</style>
