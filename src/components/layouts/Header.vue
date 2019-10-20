@@ -1,6 +1,6 @@
 <template>
   <header class="page-header">
-    <img class="logo" src="../assets/logo.png">
+    <img class="logo" src="@/assets/images/logo.png">
     <h1>
       TodoList
       <i class="color-primary">CCleaner</i>
@@ -9,11 +9,11 @@
 </template>
 
 <script>
-export default {
-  name: 'Header',
-  data() {
-    return {
+  export default {
+    name: 'Header',
+    data() {
+      return {
+      }
     }
   }
-}
 </script>

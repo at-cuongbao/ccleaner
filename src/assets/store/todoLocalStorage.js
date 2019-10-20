@@ -7,6 +7,7 @@ export const todoLocalStorage = {
       todo.id = index
       idForTodo = index + 1
     });
+
     return {todos, idForTodo};
   },
   set: (key, todos) => {

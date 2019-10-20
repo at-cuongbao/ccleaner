@@ -1,0 +1,15 @@
+.clr {
+  @extend %clr;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.middle {
+  vertical-align: middle;
+}
+.is-relative {
+  position: relative;
+}
