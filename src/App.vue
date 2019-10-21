@@ -6,17 +6,17 @@
 </template>
 
 <script>
-import ToDoList from "./components/ToDoList";
-import Header from "./components/Header";
-
-export default {
-  name: "App",
-  components: {
-    ToDoList,
-    Header
-  }
-};
+  import ToDoList from "./components/features/ToDoList";
+  import Header from "./components/layouts/Header";
+  export default {
+    name: "App",
+    components: {
+      ToDoList,
+      Header
+    }
+  };
 </script>
+
 <style lang="scss">
-@import "./assets/styles/styles.scss";
+  @import "./assets/styles/styles.scss";
 </style>

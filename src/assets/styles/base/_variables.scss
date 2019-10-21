@@ -1,0 +1,39 @@
+$font-family-default: "M PLUS Rounded 1c", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+// == Breakpoints ===
+$breakpoints: (
+  small: 480px,
+  medium: 768px,
+  wide: 960px,
+  large: 1024px,
+  largest: 1280px
+);
+$color: (
+  primary: #ff8a87,
+  secondary: #554E8F,
+  border: #e2e2e2,
+  text: #193b68,
+  background: #f9f9f9,
+  white: #ffffff,
+  black: #000000,
+  yellow: #FFD506,
+  pink: #de0d6c,
+  blue: #2126e2,
+  green-light: #49b4af
+);
+$font-size: (
+  sm: 14,
+  md: 16,
+  lg: 18,
+  xl: 20
+);
+$font-icon: (
+  icon-add: "\e900",
+  icon-all: "\e901",
+  icon-planning: "\e902",
+  icon-completed: "\e903",
+  icon-remove: "\e904",
+  icon-list: "\e905",
+  icon-alls: "\e906",
+  icon-close: "\e907",
+  icon-trash: "\e908",
+)
