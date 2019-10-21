@@ -10,11 +10,11 @@
       <li class="filter-item pointer" :class="{ active: filter == 'completed' }" @click="filter = 'completed'">
         <i class="icon-completed bold d-block"></i>Completed
       </li>
-      <li class="filter-item pointer" @click="onClearCompleted">
+      <li :class="{'is-disabled': true}" class="filter-item pointer" @click="onClearCompleted">
         <i class="icon-remove bold d-block"></i>Clear
       </li>
     </ul>
-    <div class="filter-action d-inline-block">
+    <div class="filter-action d-inline-block" @click="addTo()">
       <i class="icon-add"></i>
     </div>
   </footer>
@@ -44,8 +44,11 @@
     },
     methods: {
       onClearCompleted() {
-        // this.todos = this.todos.filter(v => !v.completed);
+        this.todos = this.todos.filter(v => !v.completed);
       },
+      addTo() {
+        this.$emit("addTodo", true);
+      }
     },
   });
 </script>
