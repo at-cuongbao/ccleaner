@@ -1,7 +1,11 @@
 <template>
   <li class="todo-item is-relative">
     <input type="checkbox" class="middle input-checkbox" v-model="completed" @change="doneEdit" />
-    <span
+    <div class="todo-item-wrapper">
+      <h3 class="todo-item-title">Illustrations</h3>
+      <p class="todo-item-content txt-limit">To be successful in time management...</p>
+    </div>
+    <!-- <span
       class="middle middle-over"
       v-if="!editing"
       @dblclick="editTodo()"
@@ -17,7 +21,7 @@
       @blur="cancelEdit()"
       @keyup.enter="doneEdit()"
     />
-    <div class="remove-item" @click="removeTodo(index)">&times;</div>
+    <div class="remove-item" @click="removeTodo(index)">&times;</div> -->
   </li>
 </template>
 

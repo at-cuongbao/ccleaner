@@ -1,28 +1,67 @@
 <template>
-  <div class="to-do-list">
+  <!-- <div class="to-do-list"> -->
+  <div class="page-main">
     <div class="container">
-      <input
+      <!-- <input
         type="text"
         class="todo-input form-control"
         placeholder="Enter a task!"
         v-model="newTodo"
-        @keyup.enter="addTodo">
-      <div class="todos">
-        <transition-group
+        @keyup.enter="addTodo"> -->
+      <div class="todo-info clr">
+        <h2 class="left">Due today</h2>
+        <span class="right">Sort by <i class="icon-add"></i></span>
+      </div>
+      <ul class="todo-list">
+        <transition name="fade">
+          <div class="no-task txt-center" v-if="todos.length">
+            <img class="img-covered" src="@/assets/images/no-task.png" alt="No task">
+            <h3 class="bold">No tasks</h3>
+            <h5>You have no task</h5>
+          </div>
+        </transition>
+        <!-- <transition-group
           name="fade"
           enter-active-class="animated fadeInUp"
-          leave-active-class="animated fadeOutDown">
-          <TodoItem
+          leave-active-class="animated fadeOutDown"> -->
+          <li class="todo-item">
+            <div class="todo-item-checkbox txt-center">
+              <input type="checkbox"/>
+            </div>
+            <div class="todo-item-wrapper">
+              <h3 class="todo-item-title">Illustrations</h3>
+              <i class="icon-trash"></i>
+            </div>
+          </li>
+          <li class="todo-item">
+            <div class="todo-item-checkbox txt-center">
+              <input type="checkbox"/>
+            </div>
+            <div class="todo-item-wrapper">
+              <h3 class="todo-item-title">Illustrations</h3>
+              <i class="icon-trash"></i>
+            </div>
+          </li>
+          <li class="todo-item">
+            <div class="todo-item-checkbox txt-center">
+              <input type="checkbox"/>
+            </div>
+            <div class="todo-item-wrapper">
+              <h3 class="todo-item-title">Illustrations</h3>
+              <i class="icon-trash"></i>
+            </div>
+          </li>
+          <!-- <TodoItem
             v-for="(todo, index) in todosFilter"
             :key="todo.id"
             :todo="todo"
             :index="index"
             :checkAll="!itemLeft"
             @finishedEdit="finishedEdit"
-            @removedTodo="removeTodo"/>
-        </transition-group>
-      </div>
-      <hr>
+            @removedTodo="removeTodo"/> -->
+        <!-- </transition-group> -->
+      </ul>
+      <!-- <hr>
       <div class="section-1 clr">
         <div class="left">
           <input type="checkbox" class="input-checkbox" @click="checkAll()" :checked="!itemLeft && todos.length" />
@@ -32,8 +71,8 @@
           <span class="middle">{{itemLeft}} item(s) left</span>
         </div>
       </div>
-      <hr>
-      <div class="section-2 left">
+      <hr> -->
+      <!-- <div class="section-2 left">
         <button :class="{active: filter == 'all'}" @click="filter = 'all'">All</button>
         <button :class="{active: filter == 'active'}" @click="filter = 'active'">Active</button>
         <button :class="{active: filter == 'completed'}" @click="filter = 'completed'">Completed</button>
@@ -42,7 +81,7 @@
         <transition name="fade">
           <button v-if="showClearCompletedBtn" @click="onClearCompleted">Clear Completed</button>
         </transition>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
