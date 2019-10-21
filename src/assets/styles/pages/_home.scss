@@ -42,7 +42,6 @@
     }
   }
   .form-group {
-    @include pxRem(top, 20);
-    @include pxRem(margin-bottom, 24);
+    @include pxRem(margin, 20);
   }
 }

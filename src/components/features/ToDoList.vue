@@ -1,94 +1,53 @@
 <template>
   <div class="page-main">
     <div class="container">
-      <!-- <input
-        type="text"
-        class="todo-input form-control"
-        placeholder="Enter a task!"
-        v-model="newTodo"
-      @keyup.enter="addTodo">-->
       <div class="todo-info clr">
-        <h2 class="left">Due today</h2>
-        <span class="right">
-          Sort by
-          <i class="icon-add"></i>
-        </span>
+        <h2 class="left">Todos today</h2>
       </div>
-      <ul class="todo-list">
+      <ul class="todo-list is-relative">
         <transition name="fade">
-          <div class="no-task txt-center" v-if="todos.length">
+          <div class="no-task txt-center" v-if="!todos.length">
             <img class="img-covered" src="@/assets/images/no-task.png" alt="No task" />
             <h3 class="bold">No tasks</h3>
             <h5>You have no task</h5>
           </div>
         </transition>
-        <!-- <transition-group
+        <transition-group
           name="fade"
           enter-active-class="animated fadeInUp"
-        leave-active-class="animated fadeOutDown">-->
-        <li class="todo-item">
-          <div class="todo-item-checkbox txt-center">
-            <input type="checkbox" />
-          </div>
-          <div class="todo-item-wrapper">
-            <h3 class="todo-item-title">Illustrations</h3>
-            <i class="icon-trash"></i>
-          </div>
-        </li>
-        <li class="todo-item">
-          <div class="todo-item-checkbox txt-center">
-            <input type="checkbox" />
-          </div>
-          <div class="todo-item-wrapper">
-            <h3 class="todo-item-title">Illustrations</h3>
-            <i class="icon-trash"></i>
-          </div>
-        </li>
-        <li class="todo-item">
-          <div class="todo-item-checkbox txt-center">
-            <input type="checkbox" />
-          </div>
-          <div class="todo-item-wrapper">
-            <h3 class="todo-item-title">Illustrations</h3>
-            <i class="icon-trash"></i>
-          </div>
-        </li>
-        <!-- <TodoItem
+          leave-active-class="animated fadeOutDown"
+        >
+          <TodoItem
             v-for="(todo, index) in todosFilter"
             :key="todo.id"
             :todo="todo"
             :index="index"
             :checkAll="!itemLeft"
             @finishedEdit="finishedEdit"
-        @removedTodo="removeTodo"/>-->
-        <!-- </transition-group> -->
+            @removedTodo="removeTodo"
+          />
+        </transition-group>
       </ul>
-      <!-- <hr>
-      <div class="section-1 clr">
-        <div class="left">
-          <input type="checkbox" class="input-checkbox" @click="checkAll()" :checked="!itemLeft && todos.length" />
-          <span class="middle">Check all</span>
-        </div>
-        <div class="right">
-          <span class="middle">{{itemLeft}} item(s) left</span>
-        </div>
-      </div>
-      <hr>-->
-      <!-- <div class="section-2 left">
-        <button :class="{active: filter == 'all'}" @click="filter = 'all'">All</button>
-        <button :class="{active: filter == 'active'}" @click="filter = 'active'">Active</button>
-        <button :class="{active: filter == 'completed'}" @click="filter = 'completed'">Completed</button>
-      </div>
-      <div class="right">
-        <transition name="fade">
-          <button v-if="showClearCompletedBtn" @click="onClearCompleted">Clear Completed</button>
-        </transition>
-      </div>-->
     </div>
-    <div class="modal">
+    <div class="modal" :class="{'d-block': isOpenModal}">
       <div class="modal-content">
-        <span class="close">&times;</span>
-        <p>Some text in the Modal..</p>
+        <div class="modal-header is-relative">
+          <h3 class="txt-center">Create a todo</h3>
+          <span class="close" @click="isOpenModal = false">&times;</span>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            maxlength="30"
+            class="form-input"
+            placeholder="Enter a task!"
+            v-model="newTodo"
+            @keyup.enter="addTodo"
+          />
+          <button type="submit" class="input-group-addon" @click="addTodo">
+            <i class="icon-add"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -100,11 +59,18 @@ import { todoLocalStorage } from "@/assets/store/todoLocalStorage.js";
 
 export default {
   name: "ToDoList",
+  props: {
+    isAddedTo: Boolean
+  },
   components: {
     TodoItem
   },
+  mounted() {
+    this.$emit("outData", { todoLength: this.todos.length });
+  },
   data() {
     return {
+      isOpenModal: false,
       newTodo: "",
       cachedTask: "",
       idForTodo: todoLocalStorage.get("todos").idForTodo,
@@ -165,14 +131,20 @@ export default {
     },
     finishedEdit(data) {
       this.todos = this.todos.map((v, i) => (i === data.index ? data.todo : v));
-    }
+    },
   },
   watch: {
     todos: {
       handler(todos) {
+        this.$emit("outData", { todoLength: todos.length });
         todoLocalStorage.set("todos", todos);
       },
       deep: true
+    },
+    isAddedTo() {
+      if (this.isAddedTo) {
+        this.isOpenModal = this.isAddedTo;
+      }
     }
   }
 };

@@ -1,27 +1,13 @@
 <template>
-  <li class="todo-item is-relative">
-    <input type="checkbox" class="middle input-checkbox" v-model="completed" @change="doneEdit" />
-    <div class="todo-item-wrapper">
-      <h3 class="todo-item-title">Illustrations</h3>
-      <p class="todo-item-content txt-limit">To be successful in time management...</p>
+  <li class="todo-item">
+    <div class="todo-item-checkbox">
+      <input type="checkbox" v-bind:id="index"/>
+      <label class="todo-item-title" v-bind:for="index"></label>
     </div>
-    <!-- <span
-      class="middle middle-over"
-      v-if="!editing"
-      @dblclick="editTodo()"
-      :class="{completed: completed}"
-    >{{title}}</span>
-    <input
-      v-else
-      v-focus
-      class="form-control middle middle-over"
-      type="text"
-      placeholder="Enter a task!"
-      v-model="title"
-      @blur="cancelEdit()"
-      @keyup.enter="doneEdit()"
-    />
-    <div class="remove-item" @click="removeTodo(index)">&times;</div> -->
+    <div class="todo-item-wrapper">
+      <h3 class="todo-item-title">{{title}}</h3>
+      <i class="icon-trash pointer" @click="removeTodo(index)"></i>
+    </div>
   </li>
 </template>
 
