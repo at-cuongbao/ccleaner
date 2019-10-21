@@ -1,0 +1,35 @@
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 3; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: hidden; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: map-get($color, primary);;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: #{f-pxRem(20)};
+    border: 1px solid map-get($color, grey);
+    width: 60%; /* Could be more or less, depending on screen size */
+    border-radius: #{f-pxRem(10)};
+    /* The Close Button */
+    .close {
+      color: map-get($color, white);
+      float: right;
+      font-size: #{f-pxRem(28)};
+      font-weight: bold;
+      &:hover,
+      &:focus {
+        color: map-get($color, black);
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+  }
+}

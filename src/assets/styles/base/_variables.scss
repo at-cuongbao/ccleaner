@@ -9,16 +9,17 @@ $breakpoints: (
 );
 $color: (
   primary: #ff8a87,
-  secondary: #554E8F,
+  secondary: #554e8f,
   border: #e2e2e2,
   text: #193b68,
-  background: #f9f9f9,
+  background: #f7d9d9,
   white: #ffffff,
   black: #000000,
-  yellow: #FFD506,
+  yellow: #ffd506,
   pink: #de0d6c,
   blue: #2126e2,
-  green-light: #49b4af
+  green-light: #49b4af,
+  grey: #aaa
 );
 $font-size: (
   sm: 14,
@@ -36,4 +37,5 @@ $font-icon: (
   icon-alls: "\e906",
   icon-close: "\e907",
   icon-trash: "\e908",
-)
+  icon-menu: "\e9ba"
+);

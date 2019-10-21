@@ -10,7 +10,8 @@ textarea {
   position: relative;
 }
 .input-group-addon {
-  @include pxRem(width, 45);
+  @include pxRem(width, 44);
+  @include pxRem(height, 44);
   @include pxRem(font-size, 24);
   @include pxRem(border-radius, 0);
   @include pxRem(border-top-right-radius, 5);
@@ -20,10 +21,7 @@ textarea {
   right: 0;
   padding: 0;
   text-align: center;
-  height: 100%;
   font-weight: normal;
-  border: 1px solid map-get($color, primary);
-  border-bottom: #{f-pxRem(2)} solid  map-get($color, green-light);
   background: map-get($color, primary);
   color: map-get($color, white)
 }

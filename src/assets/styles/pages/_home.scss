@@ -1,12 +1,25 @@
 .page-main {
-  margin: 60px 0 120px;
+  @include pxRem(margin, 60 0 120);
   .todo-info {
-    margin-bottom: 20px;
+    @include pxRem(margin-bottom, 20);
+  }
+  .todo-list:before {
+    content: "";
+    background: #ff8a87;
+    display: inline-block;
+    position: absolute;
+    left: #{f-pxRem(9)};
+    top: #{f-pxRem(27)};
+    width: #{f-pxRem(2)};
+    height: calc(100% - #{f-pxRem(54)});
+    z-index: 1;
   }
   .todo-item {
+    @include pxRem(margin, 20 0);
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    z-index: 2;
+    position: relative;
     .todo-item-checkbox {
       width: 10%;
       input {
@@ -14,9 +27,9 @@
       }
     }
     .todo-item-wrapper {
+      @include pxRem(border-radius, 16);
+      @include pxRem(padding, 20 40);
       width: 90%;
-      border-radius: 16px;
-      padding: 20px;
       background-color: white;
       display: flex;
       align-items: center;
@@ -25,7 +38,11 @@
   }
   .no-task {
     img {
-      width: 50px;
+      @include pxRem(width, 50);
     }
+  }
+  .form-group {
+    @include pxRem(top, 20);
+    @include pxRem(margin-bottom, 24);
   }
 }

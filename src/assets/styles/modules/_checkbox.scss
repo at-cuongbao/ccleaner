@@ -1,0 +1,49 @@
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked) {
+  position: absolute;
+  left: #{f-pxRem(-9999)};
+}
+[type="checkbox"]:checked + label,
+[type="checkbox"]:not(:checked) + label {
+  position: relative;
+  padding-left: #{f-pxRem(28)};
+  cursor: pointer;
+  line-height: #{f-pxRem(20)};
+  display: inline-block;
+  color: map-get($color, grey);
+}
+[type="checkbox"]:checked + label:before,
+[type="checkbox"]:not(:checked) + label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: #{f-pxRem(-16)};
+  width: #{f-pxRem(18)};
+  height: #{f-pxRem(18)};
+  border: 1px solid map-get($color, border);
+  background: map-get($color, white);
+  border-radius: 50%;
+}
+[type="checkbox"]:checked + label:after,
+[type="checkbox"]:not(:checked) + label:after {
+  content: "";
+  width: #{f-pxRem(8)};
+  height: #{f-pxRem(8)};
+  background: map-get($color, primary);
+  position: absolute;
+  top: #{f-pxRem(-10)};
+  left: #{f-pxRem(6)};
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  border-radius: 50%;
+}
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
