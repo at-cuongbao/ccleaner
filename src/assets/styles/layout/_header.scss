@@ -1,13 +1,13 @@
 .header {
-  background-color: #ff8a87;
-  height: 115px;
+  @include pxRem(height, 115);
+  background-color: map-get($color, primary);
   .header-top {
-    padding: 20px 0;
-    font-size: 32px;
-    color: white;
+    @include pxRem(padding, 20 0);
+    @include pxRem(font-size, 28);
+    color: map-get($color, white);
   }
   .filter-list {
-    border-radius: 16px;
-    background-color: white;
+    @include pxRem(border-radius, 16);
+    background-color: map-get($color, white);
   }
 }
