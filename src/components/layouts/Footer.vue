@@ -15,7 +15,6 @@
       </li>
     </ul>
     <div class="filter-action d-inline-block">
-      <!-- <router-link class="filter-action" to="/add"></router-link> -->
       <i class="icon-add"></i>
     </div>
   </footer>
