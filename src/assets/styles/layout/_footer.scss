@@ -25,8 +25,9 @@
 .filter-list {
   justify-content: space-around;
   .filter-item {
-    @include pxRem(padding, 14 10);
-    @include pxRem(font-size, 12);
+    @include pxRem(padding, 16 10 12);
+    @include pxRem(font-size, 10);
+    @include pxRem(line-height, 16);
     flex: 1;
     text-align: center;
     &.active {
