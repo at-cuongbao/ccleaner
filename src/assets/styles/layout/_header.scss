@@ -9,5 +9,8 @@
   .filter-list {
     @include pxRem(border-radius, 16);
     background-color: map-get($color, white);
+    .filter-number {
+      @include pxRem(font-size, 20);
+    }
   }
 }
