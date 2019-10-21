@@ -1,0 +1,36 @@
+.footer {
+  background: map-get($color, white);
+  position: fixed;
+  z-index: 2;
+  bottom: 0;
+  width: 100%;
+  .filter-action {
+    @include pxRem('width', 60);
+    @include pxRem('height', 60);
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    background-color: map-get($color, primary);
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 50%;
+    .icon-add {
+      @include pxRem('font-size', 32);
+      line-height: 60px;
+      color: map-get($color, white);
+    }
+  }
+}
+.filter-list {
+  justify-content: space-around;
+  .filter-item {
+    flex: 1;
+    padding: 14px 10px;
+    text-align: center;
+    &.active {
+      color: map-get($color, primary);
+      box-shadow: inset 0px 0px 10px 0px rgba(94, 94, 94, 0.3);
+    }
+  }
+}
