@@ -4,7 +4,7 @@
     @include pxRem(margin-bottom, 20);
   }
   .todo-list:before {
-    @include pxRem(left, 29);
+    @include pxRem(left, 31);
     @include pxRem(top, 29);
     @include pxRem(width, 1);
     content: "";
@@ -30,10 +30,11 @@
     }
     &-wrapper {
       @include pxRem(border-radius, 10);
-      @include pxRem(padding, 20 40);
+      @include pxRem(padding, 10 15);
       @extend %flex-between;
       width: calc(100% - #{f-pxRem(20)});
       background-color: map-get($color, white);
+      box-shadow: 0 1px 6px 0 rgb(230, 230, 230);
     }
     &-title.completed {
       text-decoration: line-through;

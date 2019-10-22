@@ -13,6 +13,7 @@
       @include pxRem(top, -16);
       @include pxRem(width, 22);
       @include pxRem(height, 22);
+      border-radius: 50%;
       content: "";
       position: absolute;
       left: 0;
@@ -22,10 +23,11 @@
     &:after {
       @include pxRem(width, 8);
       @include pxRem(height, 8);
-      @include pxRem(top, -10);
-      @include pxRem(left, 6);
+      @include pxRem(top, -8);
+      @include pxRem(left, 8);
       content: "";
       background: map-get($color, primary);
+      border-radius: 50%;
       position: absolute;
       transition: all 0.2s ease;
     }

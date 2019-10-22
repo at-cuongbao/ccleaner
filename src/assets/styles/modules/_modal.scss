@@ -13,10 +13,13 @@
   /* Modal Content/Box */
   .modal-content {
     @include pxRem(border-radius, 10);
+    @include pxRem(width, 340);
     background-color: map-get($color, background);
-    margin: 15% auto; /* 15% from the top and centered */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border: 1px solid map-get($color, grey);
-    width: 92%; /* Could be more or less, depending on screen size */
     animation-name: animatetop;
     animation-duration: 0.4s;
     .modal-header {
