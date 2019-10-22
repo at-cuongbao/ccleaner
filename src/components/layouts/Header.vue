@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import { todoLocalStorage } from "@/assets/store/todoLocalStorage.js";
+
 export default {
   name: "Header",
   props: {
@@ -35,13 +37,18 @@ export default {
       todoLength: Number
     }
   },
-  mounted() {
-    this.todoLength;
-  },
   data() {
     return {
-      todoLength: this.dataOut.todoLength
+      todoLength: todoLocalStorage.get("todos").todos.length
     };
+  },
+  watch: {
+    todoLength: {
+      handler(todos) {
+        
+      },
+      deep: true
+    }
   }
 };
 </script>

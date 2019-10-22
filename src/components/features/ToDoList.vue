@@ -29,27 +29,29 @@
         </transition-group>
       </ul>
     </div>
-    <div class="modal" :class="{'d-block': isOpenModal}">
-      <div class="modal-content">
-        <div class="modal-header is-relative">
-          <h3 class="txt-center">Create a todo</h3>
-          <span class="close" @click="isOpenModal = false">&times;</span>
-        </div>
-        <div class="form-group">
-          <input
-            type="text"
-            maxlength="30"
-            class="form-input"
-            placeholder="Enter a task!"
-            v-model="newTodo"
-            @keyup.enter="addTodo"
-          />
-          <button type="submit" class="input-group-addon" @click="addTodo">
-            <i class="icon-add"></i>
-          </button>
+    <transition name="fade">
+      <div class="modal" :class="{'d-block': isOpenModal}" @keyup.esc="closeModal">
+        <div class="modal-content">
+          <div class="modal-header is-relative">
+            <h3 class="txt-center">Create a todo</h3>
+            <span class="close" @click="isOpenModal = false">&times;</span>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              maxlength="30"
+              class="form-input"
+              placeholder="Enter a task!"
+              v-model="newTodo"
+              @keyup.enter="addTodo"
+            />
+            <button type="submit" class="input-group-addon" @click="addTodo">
+              <i class="icon-add"></i>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -60,7 +62,9 @@ import { todoLocalStorage } from "@/assets/store/todoLocalStorage.js";
 export default {
   name: "ToDoList",
   props: {
-    isAddedTo: Boolean
+    isAddedTo: Boolean,
+    isClearCompleted: Boolean,
+    filterTodos: String
   },
   components: {
     TodoItem
@@ -132,6 +136,9 @@ export default {
     finishedEdit(data) {
       this.todos = this.todos.map((v, i) => (i === data.index ? data.todo : v));
     },
+    closeModal() {
+      this.isOpenModal = false;
+    }
   },
   watch: {
     todos: {
@@ -145,6 +152,14 @@ export default {
       if (this.isAddedTo) {
         this.isOpenModal = this.isAddedTo;
       }
+    },
+    isClearCompleted() {
+      if (this.isClearCompleted) {
+        this.onClearCompleted();
+      }
+    },
+    filterTodos() {
+      
     }
   }
 };
