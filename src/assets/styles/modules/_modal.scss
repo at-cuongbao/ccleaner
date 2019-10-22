@@ -12,18 +12,28 @@
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
   /* Modal Content/Box */
   .modal-content {
-    background-color: map-get($color, primary);;
+    @include pxRem(border-radius, 10);
+    background-color: map-get($color, background);
     margin: 15% auto; /* 15% from the top and centered */
-    padding: #{f-pxRem(20)};
     border: 1px solid map-get($color, grey);
-    width: 60%; /* Could be more or less, depending on screen size */
-    border-radius: #{f-pxRem(10)};
+    width: 92%; /* Could be more or less, depending on screen size */
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    .modal-header {
+      @include pxRem(border-radius, 10 10 0 0);
+      @include pxRem(padding, 10);
+      background-color: map-get($color, primary);
+      color: map-get($color, white);
+    }
     /* The Close Button */
     .close {
+      @include pxRem(top, 10);
+      @include pxRem(right, 10);
+      @include pxRem(font-size, 28);
       color: map-get($color, white);
       float: right;
-      font-size: #{f-pxRem(28)};
       font-weight: bold;
+      position: absolute;
       &:hover,
       &:focus {
         color: map-get($color, black);
@@ -31,5 +41,15 @@
         cursor: pointer;
       }
     }
+  }
+}
+@keyframes animatetop {
+  from { 
+    @include pxRem(top, -300);
+    opacity: 0
+  }
+  to {
+    top: 0;
+    opacity: 1
   }
 }

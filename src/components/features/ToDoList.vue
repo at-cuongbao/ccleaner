@@ -31,7 +31,10 @@
     </div>
     <div class="modal" :class="{'d-block': isOpenModal}">
       <div class="modal-content">
-        <span class="close" @click="isOpenModal = false">&times;</span>
+        <div class="modal-header is-relative">
+          <h3 class="txt-center">Create a todo</h3>
+          <span class="close" @click="isOpenModal = false">&times;</span>
+        </div>
         <div class="form-group">
           <input
             type="text"

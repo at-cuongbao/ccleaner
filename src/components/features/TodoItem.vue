@@ -1,12 +1,12 @@
 <template>
   <li class="todo-item">
     <div class="todo-item-checkbox">
-      <input type="checkbox" v-bind:id="index"/>
+      <input class="timeline-checkbox" type="checkbox" v-bind:id="index"/>
       <label class="todo-item-title" v-bind:for="index"></label>
     </div>
     <div class="todo-item-wrapper">
-      <h3 class="todo-item-title">{{title}}</h3>
-      <i class="icon-trash" @click="removeTodo(index)"></i>
+      <h4 class="todo-item-title">{{title}}</h4>
+      <i class="icon-trash pointer" @click="removeTodo(index)"></i>
     </div>
   </li>
 </template>

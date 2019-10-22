@@ -1,16 +1,16 @@
 .page-main {
-  @include pxRem(margin, 60 0 120);
+  @include pxRem(margin, 50 0);
   .todo-info {
     @include pxRem(margin-bottom, 20);
   }
   .todo-list:before {
+    @include pxRem(left, 29);
+    @include pxRem(top, 29);
+    @include pxRem(width, 1);
     content: "";
-    background: #ff8a87;
+    background: map-get($color, white-light);
     display: inline-block;
     position: absolute;
-    left: #{f-pxRem(9)};
-    top: #{f-pxRem(27)};
-    width: #{f-pxRem(2)};
     height: calc(100% - #{f-pxRem(54)});
     z-index: 1;
   }
@@ -20,20 +20,24 @@
     align-items: center;
     z-index: 2;
     position: relative;
-    .todo-item-checkbox {
-      width: 10%;
+    &-checkbox {
+      @include pxRem(width, 20);
+      @include pxRem(height, 20);
+      @include pxRem(margin, 0 20);
       input {
         width: auto;
       }
     }
-    .todo-item-wrapper {
-      @include pxRem(border-radius, 16);
+    &-wrapper {
+      @include pxRem(border-radius, 10);
       @include pxRem(padding, 20 40);
-      width: 90%;
-      background-color: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      @extend %flex-between;
+      width: calc(100% - #{f-pxRem(20)});
+      background-color: map-get($color, white);
+    }
+    &-title.completed {
+      text-decoration: line-through;
+      color: map-get($color, gray);
     }
   }
   .no-task {
@@ -42,7 +46,6 @@
     }
   }
   .form-group {
-    @include pxRem(top, 20);
-    @include pxRem(margin-bottom, 24);
+    @include pxRem(margin, 20);
   }
 }
