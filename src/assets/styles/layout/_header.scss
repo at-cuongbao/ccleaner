@@ -5,6 +5,9 @@
     @include pxRem(padding, 10 0);
     @include pxRem(font-size, 28);
     color: map-get($color, white);
+    .icon-menu {
+      @include pxRem(font-size, 20);
+    }
     .avatar {
       @include pxRem(width, 40);
       @include pxRem(height, 40);
@@ -14,7 +17,7 @@
     }
   }
   .filter-list {
-    @include pxRem(border-radius, 10);
+    @include pxRem(border-radius, 7);
     box-shadow: 0 #{f-pxRem(2)} #{f-pxRem(48)} 0 rgba(0, 0, 0, 0.08);
     background-color: map-get($color, white);
     .filter-number {
