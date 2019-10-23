@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Header />
-    <ToDoList />
-    <Footer />
+    <Header :dataOut="dataOut"/>
+    <ToDoList :isAddedTo="isAddedTo" @outData="outData"/>
+    <Footer @addTodo="addTodo"/>
   </div>
 </template>
 
@@ -16,6 +16,22 @@
       ToDoList,
       Header,
       Footer
+    },
+    data() {
+      return {
+        isAddedTo: false,
+        dataOut: {
+          todoLength: 0
+        }
+      };
+    },
+    methods: {
+      addTodo(trigger) {
+        this.isAddedTo = trigger;
+      },
+      outData(dataOut) {
+        this.dataOut = { todoLength: dataOut.todoLength };
+      }
     }
   };
 </script>

@@ -1,0 +1,38 @@
+.page-main {
+  @include pxRem(margin, 50 0 100);
+  .todo-info {
+    @include pxRem(margin-bottom, 20);
+  }
+  .no-task {
+    img {
+      @include pxRem(width, 50);
+    }
+  }
+  .form-group {
+    @include pxRem(margin, 20);
+  }
+}
+.list-todo {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  &:before {
+    @include pxRem(left, 12);
+    @include pxRem(top, 29);
+    content: "";
+    width: 1px;
+    height: calc(100% - #{f-pxRem(70)});
+    background: map-get($color, white-light);
+    position: absolute;
+  }
+  .list-item {
+    position: relative;
+    .icon-trash {
+      @include pxRem(margin-top, -10);
+      @include pxRem(right, 15);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}

@@ -1,13 +1,17 @@
 <template>
-  <div class="to-do-list">
+  <div class="page-main">
     <div class="container">
-      <input
-        type="text"
-        class="todo-input form-control"
-        placeholder="Enter a task!"
-        v-model="newTodo"
-        @keyup.enter="addTodo">
-      <div class="todos">
+      <div class="todo-info clr">
+        <h2 class="left">Today's task</h2>
+      </div>
+      <transition name="fade">
+        <div class="no-task txt-center" v-if="!todos.length">
+          <img class="img-covered" src="@/assets/images/no-task.png" alt="No task" />
+          <h3 class="bold">No tasks</h3>
+          <h5>You have no task</h5>
+        </div>
+      </transition>
+      <ul class="list-todo is-relative">
         <transition-group
           name="fade"
           enter-active-class="animated fadeInUp"
@@ -19,114 +23,128 @@
             :index="index"
             :checkAll="!itemLeft"
             @finishedEdit="finishedEdit"
-            @removedTodo="removeTodo"/>
+            @removedTodo="removeTodo"
+          />
         </transition-group>
-      </div>
-      <hr>
-      <div class="section-1 clr">
-        <div class="left">
-          <input type="checkbox" class="input-checkbox" @click="checkAll()" :checked="!itemLeft && todos.length" />
-          <span class="middle">Check all</span>
+      </ul>
+    </div>
+    <div class="modal" :class="{'d-block': isOpenModal}">
+      <div class="modal-content">
+        <div class="modal-header is-relative">
+          <h3 class="txt-center">Create a todo</h3>
+          <span class="close" @click="isOpenModal = false">&times;</span>
         </div>
-        <div class="right">
-          <span class="middle">{{itemLeft}} item(s) left</span>
+        <div class="form-group">
+          <input
+            type="text"
+            maxlength="30"
+            class="form-input"
+            placeholder="Enter a task!"
+            v-model="newTodo"
+            @keyup.enter="addTodo"
+          />
+          <button type="submit" class="input-group-addon" @click="addTodo">
+            <i class="icon-add"></i>
+          </button>
         </div>
-      </div>
-      <hr>
-      <div class="section-2 left">
-        <button :class="{active: filter == 'all'}" @click="filter = 'all'">All</button>
-        <button :class="{active: filter == 'active'}" @click="filter = 'active'">Active</button>
-        <button :class="{active: filter == 'completed'}" @click="filter = 'completed'">Completed</button>
-      </div>
-      <div class="right">
-        <transition name="fade">
-          <button v-if="showClearCompletedBtn" @click="onClearCompleted">Clear Completed</button>
-        </transition>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import TodoItem from "./TodoItem";
-  import { todoLocalStorage } from "@/assets/store/todoLocalStorage.js";
+import TodoItem from "./TodoItem";
+import { todoLocalStorage } from "@/assets/store/todoLocalStorage.js";
 
-  export default {
-    name: "ToDoList",
-    components: {
-      TodoItem
+export default {
+  name: "ToDoList",
+  props: {
+    isAddedTo: Boolean
+  },
+  components: {
+    TodoItem
+  },
+  mounted() {
+    this.$emit("outData", { todoLength: this.todos.length });
+  },
+  data() {
+    return {
+      isOpenModal: false,
+      newTodo: "",
+      cachedTask: "",
+      idForTodo: todoLocalStorage.get("todos").idForTodo,
+      filter: "all",
+      todos: todoLocalStorage.get("todos").todos
+    };
+  },
+  computed: {
+    itemLeft() {
+      return this.todos.filter(v => !v.completed).length;
     },
-    data() {
-      return {
-        newTodo: "",
-        cachedTask: "",
-        idForTodo: todoLocalStorage.get("todos").idForTodo,
-        filter: "all",
-        todos: todoLocalStorage.get("todos").todos
-      };
-    },
-    computed: {
-      itemLeft() {
-        return this.todos.filter(v => !v.completed).length;
-      },
-      todosFilter() {
-        switch (this.filter) {
-          case "active":
-            return this.todos.filter(v => !v.completed);
-          case "completed":
-            return this.todos.filter(v => v.completed);
-          default:
-            return this.todos;
-        }
-      },
-      showClearCompletedBtn() {
-        return this.todos.filter(v => v.completed).length > 0;
+    todosFilter() {
+      switch (this.filter) {
+        case "active":
+          return this.todos.filter(v => !v.completed);
+        case "completed":
+          return this.todos.filter(v => v.completed);
+        default:
+          return this.todos;
       }
     },
-    directives: {
-      focus: {
-        inserted: function(el) {
-          el.focus();
-        }
-      }
-    },
-    methods: {
-      addTodo() {
-        if (this.newTodo.trim().length) {
-          this.todos.push({
-            id: this.idForTodo,
-            title: this.newTodo,
-            completed: false,
-            editing: false
-          });
-
-          this.newTodo = "";
-          this.idForTodo++;
-        }
-      },
-      removeTodo(index) {
-        this.todos.splice(index, 1);
-      },
-      checkAll() {
-        this.todos = this.todos.map(v => {
-          v.completed = event.target.checked;
-          return v;
-        });
-      },
-      onClearCompleted() {
-        this.todos = this.todos.filter(v => !v.completed);
-      },
-      finishedEdit(data) {
-        this.todos = this.todos.map((v, i) => (i === data.index ? data.todo : v));
-      }
-    },
-    watch: {
-      todos: {
-        handler(todos) {
-          todoLocalStorage.set("todos", todos);
-        },
-        deep: true
+    showClearCompletedBtn() {
+      return this.todos.filter(v => v.completed).length > 0;
+    }
+  },
+  directives: {
+    focus: {
+      inserted: function(el) {
+        el.focus();
       }
     }
-  };
+  },
+  methods: {
+    addTodo() {
+      if (this.newTodo.trim().length) {
+        this.todos.push({
+          id: this.idForTodo,
+          title: this.newTodo,
+          completed: false,
+          editing: false
+        });
+
+        this.newTodo = "";
+        this.idForTodo++;
+      }
+    },
+    removeTodo(index) {
+      this.todos.splice(index, 1);
+    },
+    checkAll() {
+      this.todos = this.todos.map(v => {
+        v.completed = event.target.checked;
+        return v;
+      });
+    },
+    onClearCompleted() {
+      this.todos = this.todos.filter(v => !v.completed);
+    },
+    finishedEdit(data) {
+      this.todos = this.todos.map((v, i) => (i === data.index ? data.todo : v));
+    },
+  },
+  watch: {
+    todos: {
+      handler(todos) {
+        this.$emit("outData", { todoLength: todos.length });
+        todoLocalStorage.set("todos", todos);
+      },
+      deep: true
+    },
+    isAddedTo() {
+      if (this.isAddedTo) {
+        this.isOpenModal = this.isAddedTo;
+      }
+    }
+  }
+};
 </script>

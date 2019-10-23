@@ -1,23 +1,11 @@
 <template>
-  <li class="todo-item is-relative">
-    <input type="checkbox" class="middle input-checkbox" v-model="completed" @change="doneEdit" />
-    <span
-      class="middle middle-over"
-      v-if="!editing"
-      @dblclick="editTodo()"
-      :class="{completed: completed}"
-    >{{title}}</span>
-    <input
-      v-else
-      v-focus
-      class="form-control middle middle-over"
-      type="text"
-      placeholder="Enter a task!"
-      v-model="title"
-      @blur="cancelEdit()"
-      @keyup.enter="doneEdit()"
-    />
-    <div class="remove-item" @click="removeTodo(index)">&times;</div>
+  <li class="list-item">
+    <input type="checkbox" class="hidden-box" v-bind:id="index" />
+    <label class="check-label"  v-bind:for="index">
+      <span class="check-label-box"></span>
+      <span class="check-label-text">{{title}}</span>
+    </label>
+    <i class="icon-trash pointer" @click="removeTodo(index)"></i>
   </li>
 </template>
 
@@ -55,11 +43,11 @@
       },
       doneEdit() {
         this.editing = false;
-        
+
         if (!this.title.trim().length) {
           this.title = this.cachedTask;
         }
-        
+
         this.$emit("finishedEdit", {
           index: this.index,
           todo: {

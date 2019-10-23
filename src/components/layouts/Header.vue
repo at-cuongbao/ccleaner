@@ -2,7 +2,7 @@
   <header class="header">
     <div class="container">
       <div class="header-top flex-between">
-        <div class="menu"><i class="icon-all"></i></div>
+        <div class="menu pointer"><i class="icon-menu"></i></div>
         <div class="heading">
           <h1>TODO</h1>
         </div>
@@ -14,7 +14,7 @@
       </div>
       <ul class="filter-list d-flex">
         <li class="filter-item">
-          <div class="filter-number">421</div>All
+          <div class="filter-number">{{todoLength}}</div>All
         </li>
         <li class="filter-item">
           <div class="filter-number">81</div>Active
@@ -30,8 +30,18 @@
 <script>
 export default {
   name: "Header",
+  props: {
+    dataOut: {
+      todoLength: Number
+    }
+  },
+  mounted() {
+    this.todoLength;
+  },
   data() {
-    return {};
+    return {
+      todoLength: this.dataOut.todoLength
+    };
   }
 };
 </script>

@@ -5,6 +5,9 @@
     @include pxRem(padding, 10 0);
     @include pxRem(font-size, 28);
     color: map-get($color, white);
+    .icon-menu {
+      @include pxRem(font-size, 20);
+    }
     .avatar {
       @include pxRem(width, 40);
       @include pxRem(height, 40);
