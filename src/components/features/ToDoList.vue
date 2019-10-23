@@ -2,21 +2,20 @@
   <div class="page-main">
     <div class="container">
       <div class="todo-info clr">
-        <h2 class="left">Todos today</h2>
+        <h2 class="left">Today's task</h2>
       </div>
-      <ul class="todo-list is-relative">
-        <transition name="fade">
-          <div class="no-task txt-center" v-if="!todos.length">
-            <img class="img-covered" src="@/assets/images/no-task.png" alt="No task" />
-            <h3 class="bold">No tasks</h3>
-            <h5>You have no task</h5>
-          </div>
-        </transition>
+      <transition name="fade">
+        <div class="no-task txt-center" v-if="!todos.length">
+          <img class="img-covered" src="@/assets/images/no-task.png" alt="No task" />
+          <h3 class="bold">No tasks</h3>
+          <h5>You have no task</h5>
+        </div>
+      </transition>
+      <ul class="list-todo is-relative">
         <transition-group
           name="fade"
           enter-active-class="animated fadeInUp"
-          leave-active-class="animated fadeOutDown"
-        >
+          leave-active-class="animated fadeOutDown">
           <TodoItem
             v-for="(todo, index) in todosFilter"
             :key="todo.id"

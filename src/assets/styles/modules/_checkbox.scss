@@ -1,47 +1,47 @@
-.timeline-checkbox:checked,
-.timeline-checkbox:not(:checked) {
-  @include pxRem(left, -9999);
-  position: absolute;
-  & + label {
-    @include pxRem(padding-left, 28);
-    @include pxRem(line-height, 20);
-    position: relative;
+
+// style checkbox
+.check-label {
+  width: 100%;
+  display: flex;
+  .check-label-text {
+    @include pxRem(margin-bottom, 20);
+    @include pxRem(border-radius, 10);
+    @include pxRem(padding, 15);
     cursor: pointer;
-    display: inline-block;
-    color: map-get($color, grey);
-    &:before {
-      @include pxRem(top, -16);
-      @include pxRem(width, 22);
-      @include pxRem(height, 22);
-      border-radius: 50%;
-      content: "";
-      position: absolute;
-      left: 0;
-      border: 1px solid map-get($color, border);
-      background: map-get($color, white);
-    }
-    &:after {
-      @include pxRem(width, 8);
-      @include pxRem(height, 8);
-      @include pxRem(top, -8);
-      @include pxRem(left, 8);
-      content: "";
-      background: map-get($color, primary);
-      border-radius: 50%;
-      position: absolute;
-      transition: all 0.2s ease;
-    }
+    position: relative;
+    width: calc(100% - #{f-pxRem(45)});
+    box-shadow: 0 #{f-pxRem(1)} #{f-pxRem(6)} 0 map-get($color, border);
+  }
+  .check-label-box {
+    @include pxRem(height, 25);
+    @include pxRem(width, 25);
+    @include pxRem(margin, 0 20 20 0);
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    position: relative;
+    border: #{f-pxRem(1)} solid map-get($color, border);
+    background: map-get($color, white);
+    border-radius: 50%;
   }
 }
-.timeline-checkbox:not(:checked) {
-  & + label:after {
-    opacity: 0;
-    transform: scale(0);
+// the magic
+.hidden-box:checked + .check-label {
+  .check-label-box {
+     &:after {
+      @include pxRem(top, 3);
+      @include pxRem(left, 7);
+      @include pxRem(width, 6);
+      @include pxRem(height, 12);
+      content: '';
+      position: absolute;
+      border: solid map-get($color, primary);
+      border-width: 0 #{f-pxRem(2)} #{f-pxRem(2)} 0;
+      transform: rotate(45deg);
+    }
   }
-}
-.timeline-checkbox:checked {
-  & + label:after {
-    opacity: 1;
-    transform: scale(1);
+  .check-label-text {
+    background-color: map-get($color, grey-light);
+    text-decoration: line-through;
   }
 }

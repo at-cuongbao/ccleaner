@@ -1,13 +1,11 @@
 <template>
-  <li class="todo-item">
-    <div class="todo-item-checkbox">
-      <input class="timeline-checkbox" type="checkbox" v-bind:id="index"/>
-      <label class="todo-item-title" v-bind:for="index"></label>
-    </div>
-    <div class="todo-item-wrapper">
-      <h4 class="todo-item-title">{{title}}</h4>
-      <i class="icon-trash pointer" @click="removeTodo(index)"></i>
-    </div>
+  <li class="list-item">
+    <input type="checkbox" class="hidden-box" v-bind:id="index" />
+    <label class="check-label"  v-bind:for="index">
+      <span class="check-label-box"></span>
+      <span class="check-label-text">{{title}}</span>
+    </label>
+    <i class="icon-trash pointer" @click="removeTodo(index)"></i>
   </li>
 </template>
 
@@ -45,11 +43,11 @@
       },
       doneEdit() {
         this.editing = false;
-        
+
         if (!this.title.trim().length) {
           this.title = this.cachedTask;
         }
-        
+
         this.$emit("finishedEdit", {
           index: this.index,
           todo: {

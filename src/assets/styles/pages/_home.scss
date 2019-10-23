@@ -1,45 +1,7 @@
 .page-main {
-  @include pxRem(margin, 50 0);
+  @include pxRem(margin, 50 0 100);
   .todo-info {
     @include pxRem(margin-bottom, 20);
-  }
-  .todo-list:before {
-    @include pxRem(left, 31);
-    @include pxRem(top, 29);
-    @include pxRem(width, 1);
-    content: "";
-    background: map-get($color, white-light);
-    display: inline-block;
-    position: absolute;
-    height: calc(100% - #{f-pxRem(54)});
-    z-index: 1;
-  }
-  .todo-item {
-    @include pxRem(margin, 20 0);
-    display: flex;
-    align-items: center;
-    z-index: 2;
-    position: relative;
-    &-checkbox {
-      @include pxRem(width, 20);
-      @include pxRem(height, 20);
-      @include pxRem(margin, 0 20);
-      input {
-        width: auto;
-      }
-    }
-    &-wrapper {
-      @include pxRem(border-radius, 10);
-      @include pxRem(padding, 10 15);
-      @extend %flex-between;
-      width: calc(100% - #{f-pxRem(20)});
-      background-color: map-get($color, white);
-      box-shadow: 0 1px 6px 0 rgb(230, 230, 230);
-    }
-    &-title.completed {
-      text-decoration: line-through;
-      color: map-get($color, gray);
-    }
   }
   .no-task {
     img {
@@ -48,5 +10,29 @@
   }
   .form-group {
     @include pxRem(margin, 20);
+  }
+}
+.list-todo {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  &:before {
+    @include pxRem(left, 12);
+    @include pxRem(top, 29);
+    content: "";
+    width: 1px;
+    height: calc(100% - #{f-pxRem(70)});
+    background: map-get($color, white-light);
+    position: absolute;
+  }
+  .list-item {
+    position: relative;
+    .icon-trash {
+      @include pxRem(margin-top, -10);
+      @include pxRem(right, 15);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 }
