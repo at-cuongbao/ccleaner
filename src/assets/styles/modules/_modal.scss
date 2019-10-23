@@ -21,7 +21,7 @@
     border: 1px solid map-get($color, grey);
     animation: animatetop 0.7s ease normal;
     .modal-header {
-      @include pxRem(border-radius, 10 10 0 0);
+      @include pxRem(border-radius, 7 7 0 0);
       @include pxRem(padding, 10);
       background-color: map-get($color, primary);
       color: map-get($color, white);
