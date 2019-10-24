@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <Header :dataOut="dataOut"/>
-    <ToDoList :isAddedTo="isAddedTo" :isClearCompleted="isClearCompleted" :filterTodos="filter" @outData="outData"/>
-    <Footer @addTodo="addTodo" @clearCompleted="clearCompleted" @filterTodos="filterTodos"/>
+    <ToDoList />
   </div>
 </template>
 
@@ -14,35 +12,7 @@ import { log } from 'util';
   export default {
     name: "App",
     components: {
-      ToDoList,
-      Header,
-      Footer
-    },
-    data() {
-      return {
-        isAddedTo: false,
-        isClearCompleted: false,
-        filter: 'all',
-        dataOut: {
-          todoLength: 0
-        }
-      };
-    },
-    methods: {
-      addTodo(trigger) {
-        this.isAddedTo = trigger;
-      },
-      outData(dataOut) {
-        this.dataOut = { todoLength: dataOut.todoLength };
-        console.log(this.dataOut);
-        
-      },
-      clearCompleted(clear) {
-        this.isClearCompleted = clear;
-      },
-      filterTodos(filter) {
-        this.filter = filter;
-      }
+      ToDoList
     }
   };
 </script>

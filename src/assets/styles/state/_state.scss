@@ -82,3 +82,8 @@
   height: 100%;
   object-fit: cover;
 }
+// hide the checkbox
+.hidden-box {
+  opacity: 0;
+  display: none;
+}

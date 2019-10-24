@@ -1,47 +1,65 @@
-.timeline-checkbox:checked,
-.timeline-checkbox:not(:checked) {
-  @include pxRem(left, -9999);
-  position: absolute;
+
+// style checkbox
+.check-label {
+  width: 100%;
+  display: flex;
+  .check-label-text {
+    @include pxRem(margin-bottom, 20);
+    @include pxRem(border-radius, 7);
+    @include pxRem(padding, 15);
+    cursor: pointer;
+    position: relative;
+    width: calc(100% - #{f-pxRem(45)});
+    box-shadow: 0 #{f-pxRem(1)} #{f-pxRem(6)} 0 map-get($color, border);
+    background: map-get($color, white);
+    overflow: hidden;
+    &:before {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      content: '';
+      background-color: #5562eb;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale3d(1, 1, 1);
+      transition: all 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+      opacity: 0;
+      z-index: -1;
+    }
+  }
+  .check-label-box {
+    @include pxRem(height, 25);
+    @include pxRem(width, 25);
+    @include pxRem(margin, 0 20 20 0);
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    position: relative;
+    border: #{f-pxRem(1)} solid map-get($color, border);
+    background: map-get($color, white);
+    border-radius: 50%;
+  }
 }
-.timeline-checkbox:checked + label,
-.timeline-checkbox:not(:checked) + label {
-  @include pxRem(padding-left, 28);
-  @include pxRem(line-height, 20);
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  color: map-get($color, grey);
-}
-.timeline-checkbox:checked + label:before,
-.timeline-checkbox:not(:checked) + label:before {
-  @include pxRem(top, -16);
-  @include pxRem(width, 18);
-  @include pxRem(height, 18);
-  content: "";
-  position: absolute;
-  left: 0;
-  border: 1px solid map-get($color, border);
-  background: map-get($color, white);
-}
-.timeline-checkbox:checked + label:after,
-.timeline-checkbox:not(:checked) + label:after {
-  @include pxRem(width, 8);
-  @include pxRem(height, 8);
-  @include pxRem(top, -10);
-  @include pxRem(left, 6);
-  content: "";
-  background: map-get($color, primary);
-  position: absolute;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-}
-.timeline-checkbox:not(:checked) + label:after {
-  opacity: 0;
-  -webkit-transform: scale(0);
-  transform: scale(0);
-}
-.timeline-checkbox:checked + label:after {
-  opacity: 1;
-  -webkit-transform: scale(1);
-  transform: scale(1);
+// the magic
+.hidden-box:checked + .check-label {
+  .check-label-box {
+    background: map-get($color, primary);
+    border-color: map-get($color, primary);
+     &:after {
+      @include pxRem(top, 3);
+      @include pxRem(left, 7);
+      @include pxRem(width, 6);
+      @include pxRem(height, 12);
+      content: '';
+      position: absolute;
+      border: solid map-get($color, white);
+      border-width: 0 #{f-pxRem(2)} #{f-pxRem(2)} 0;
+      transform: rotate(45deg);
+    }
+  }
+  .check-label-text {
+    background-color: map-get($color, grey-light);
+    text-decoration: line-through;
+  }
 }
