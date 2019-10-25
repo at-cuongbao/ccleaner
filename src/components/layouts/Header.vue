@@ -28,8 +28,6 @@
 </template>
 
 <script>
-import { todoLocalStorage } from "@/assets/store/todoLocalStorage.js";
-
 export default {
   name: "Header",
   props: {

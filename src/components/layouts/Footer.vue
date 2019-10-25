@@ -44,10 +44,13 @@
         switch (this.filter) {
           case "active":
             this.$emit("filtered", filter);
+            break;
           case "completed":
             this.$emit("filtered", filter);
+            break;
           default:
             this.$emit("filtered", filter);
+            break;
         }
       }
     },

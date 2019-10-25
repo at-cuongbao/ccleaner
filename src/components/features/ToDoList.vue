@@ -32,14 +32,15 @@
         </ul>
       </div>
       <transition name="fade">
-        <div class="modal" :class="{'d-block': isOpenModal}" @keyup.esc="closeModal">
-          <div class="modal-content">
+        <div v-if="isOpenModal" class="modal" @keyup.esc="closeModal" @click="closeModal()">
+          <div class="modal-content" @click="onClickModalContent($event)">
             <div class="modal-header is-relative">
               <h3 class="txt-center">Create a todo</h3>
-              <span class="close" @click="isOpenModal = false">&times;</span>
+              <span class="close pointer" @click="isOpenModal = false">&times;</span>
             </div>
             <div class="form-group">
               <input
+                id="input"
                 type="text"
                 maxlength="30"
                 class="form-input"
@@ -48,7 +49,7 @@
                 @keyup.enter="addTodo"
               />
               <button type="submit" class="input-group-addon" @click="addTodo">
-                <i class="icon-add"></i>
+                <i class="icon-add pointer"></i>
               </button>
             </div>
           </div>
@@ -151,6 +152,13 @@ export default {
     },
     openModal() {
       this.isOpenModal = true;
+
+      setTimeout(() => {
+        document.getElementById('input').focus();
+      })
+    },
+    onClickModalContent($event) {
+      $event.stopPropagation();
     },
     filterTodo(filter) {
       this.filter = filter;
