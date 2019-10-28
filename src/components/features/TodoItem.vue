@@ -1,6 +1,6 @@
 <template>
   <li class="list-item">
-    <input type="checkbox" class="hidden-box" v-bind:id="index" />
+    <input type="checkbox" class="hidden-box" v-bind:id="index" v-model="completed" @change="doneEdit" />
     <label class="check-label"  v-bind:for="index">
       <span class="check-label-box"></span>
       <span class="check-label-text">{{title}}</span>

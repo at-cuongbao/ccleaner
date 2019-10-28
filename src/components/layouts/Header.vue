@@ -8,19 +8,19 @@
         </div>
         <div class="user">
           <a href="#" class="avatar flex-between">
-            <img class="img-covered" src="@/assets/images/avatar.jpeg" alt="avatar">
+            <img class="img-covered" src="@/assets/images/avatar.jpg" alt="avatar">
           </a>
         </div>
       </div>
       <ul class="filter-list d-flex">
         <li class="filter-item">
-          <div class="filter-number">{{todoLength}}</div>All
+          <div class="filter-number">{{allTodo}}</div>All
         </li>
         <li class="filter-item">
-          <div class="filter-number">81</div>Active
+          <div class="filter-number">{{activeTodo}}</div>Active
         </li>
         <li class="filter-item">
-          <div class="filter-number">72</div>Completed
+          <div class="filter-number">{{completedTodo}}</div>Completed
         </li>
       </ul>
     </div>
@@ -31,17 +31,9 @@
 export default {
   name: "Header",
   props: {
-    dataOut: {
-      todoLength: Number
-    }
-  },
-  mounted() {
-    this.todoLength;
-  },
-  data() {
-    return {
-      todoLength: this.dataOut.todoLength
-    };
+    allTodo: Number,
+    activeTodo: Number,
+    completedTodo: Number
   }
 };
 </script>
