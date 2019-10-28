@@ -4,8 +4,8 @@
     <label class="check-label"  v-bind:for="index">
       <span class="check-label-box"></span>
       <span class="check-label-text">{{title}}</span>
+      <i class="icon-trash pointer" @click="removeTodo(index)"></i>
     </label>
-    <i class="icon-trash pointer" @click="removeTodo(index)"></i>
   </li>
 </template>
 

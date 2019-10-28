@@ -27,6 +27,7 @@
   &:before {
     @include pxRem(left, 12);
     @include pxRem(top, 29);
+    display: none;
     content: "";
     width: 1px;
     height: calc(100% - #{f-pxRem(70)});
