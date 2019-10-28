@@ -4,8 +4,16 @@
     @include pxRem(margin-bottom, 20);
   }
   .no-task {
+    @include pxRem(width, 150);
+    @include pxRem(height, 150);
+    left: 0;
+    top: 0;
+    right: 0;
+    margin: auto;
+    bottom: 0;
     img {
       @include pxRem(width, 50);
+      @include pxRem(height, 70);
     }
   }
   .form-group {
@@ -22,7 +30,7 @@
     content: "";
     width: 1px;
     height: calc(100% - #{f-pxRem(70)});
-    background: map-get($color, white-light);
+    background: map-get($color, border);
     position: absolute;
   }
   .list-item {

@@ -74,6 +74,13 @@
     display: none;
   }
 }
+.flex-center {
+  @extend %flex-centered;
+  &::before,
+  &::after {
+    display: none;
+  }
+}
 .w-100 {
   width: 100%;
 }
@@ -82,7 +89,7 @@
   height: 100%;
   object-fit: cover;
 }
-// hide the checkbox
+// Hide the checkbox
 .hidden-box {
   opacity: 0;
   display: none;

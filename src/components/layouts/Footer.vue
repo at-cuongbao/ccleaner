@@ -7,12 +7,17 @@
       <li class="filter-item pointer" :class="{ active: filter == 'active' }" @click="onFilter('active')">
         <i class="icon-planning bold d-block"></i>Active
       </li>
+      <li class="filter-item filter-item-custom pointer">
+        <div class="filter-action d-inline-block pointer" @click="onAddTo()">
+          <i class="icon-add"></i>
+        </div>
+      </li>
       <li class="filter-item pointer" :class="{ active: filter == 'completed' }" @click="onFilter('completed')">
         <i class="icon-completed bold d-block"></i>Completed
       </li>
       <transition name="fade">
         <li :class="{'is-disabled': !showClearCompletedBtn}" class="filter-item pointer" @click="onClearCompleted()">
-          <i class="icon-remove bold d-block"></i>Clear completed
+          <i class="icon-remove bold d-block"></i>Clear
         </li>
       </transition>
     </ul>

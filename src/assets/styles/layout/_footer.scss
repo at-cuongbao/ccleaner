@@ -38,5 +38,9 @@
     [class^="icon-"] {
       @include pxRem(font-size, 20);
     }
+    &-custom {
+      border-bottom: #{f-pxRem(3)} solid map-get($color, border);
+      @include pxRem(margin-bottom, 16);
+    }
   }
 }
