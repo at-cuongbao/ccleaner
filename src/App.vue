@@ -1,19 +1,32 @@
 <template>
   <div id="app">
-    <ToDoList />
+    <div v-if="!isLoading">
+      <ToDoList/>
+    </div>
+    <Loading :isLoading="isLoading"/>
   </div>
 </template>
 
 <script>
   import ToDoList from "./components/features/ToDoList";
-  import Header from "./components/layouts/Header";
-  import Footer from "./components/layouts/Footer";
-import { log } from 'util';
+  import Loading from "./components/shared/Loading";
+
   export default {
     name: "App",
     components: {
-      ToDoList
-    }
+      ToDoList,
+      Loading
+    },
+    data() {
+      return {
+        isLoading: true
+      }
+    },
+    mounted() {
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 3000);
+    },
   };
 </script>
 
