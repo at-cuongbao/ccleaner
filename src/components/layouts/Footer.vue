@@ -1,10 +1,10 @@
 <template>
   <footer class="footer">
     <ul class="filter-list d-flex">
-      <li class="filter-item pointer" :class="{ active: filter == 'all' }" @click="onFilter('all')">
+      <li class="filter-item pointer" :class="{ active: filter === 'all' }" @click="onFilter('all')">
         <i class="icon-all bold d-block"></i>All
       </li>
-      <li class="filter-item pointer" :class="{ active: filter == 'active' }" @click="onFilter('active')">
+      <li class="filter-item pointer" :class="{ active: filter === 'active' }" @click="onFilter('active')">
         <i class="icon-planning bold d-block"></i>Active
       </li>
       <li class="filter-item filter-item-custom pointer">
@@ -12,7 +12,7 @@
           <i class="icon-add"></i>
         </div>
       </li>
-      <li class="filter-item pointer" :class="{ active: filter == 'completed' }" @click="onFilter('completed')">
+      <li class="filter-item pointer" :class="{ active: filter === 'completed' }" @click="onFilter('completed')">
         <i class="icon-completed bold d-block"></i>Completed
       </li>
       <transition name="fade">
